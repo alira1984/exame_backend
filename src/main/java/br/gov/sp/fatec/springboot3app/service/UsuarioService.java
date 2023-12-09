@@ -62,6 +62,13 @@ public class UsuarioService implements IUsuarioService{
         return usuarioRepo.findAll();
     }
 
+    public Usuario Demissao(Usuario usuario) {
+        Optional <Usuario> usuarioop = usuarioRepo.findByNome(usuario.getNome());
+        Usuario newusuario = usuarioop.get();
+        newusuario.setDemissao(usuario.getDemissao());
+        return usuarioRepo.save(newusuario);
+    }
+
     public Usuario buscarUsuarioPorId(Long id) {
         Optional<Usuario> usuarioOp = usuarioRepo.findById(id);
         if(usuarioOp.isEmpty()) {

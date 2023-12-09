@@ -20,4 +20,6 @@ public interface IUsuarioService {
 
     public Anotacao novaAnotacao(Anotacao anotacao);
 
+    public Usuario Demissao(Usuario usuario);
+
 }

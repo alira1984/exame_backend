@@ -1,5 +1,7 @@
 package br.gov.sp.fatec.springboot3app.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,16 +29,28 @@ public class Usuario {
     @Column(name = "usr_senha")
     private String senha;
 
+    @Column(name = "data_demissao")
+    private LocalDate demissao;
+
+    public LocalDate getDemissao() {
+        return demissao;
+    }
+
+    public void setDemissao(LocalDate demissao) {
+        this.demissao = demissao;
+    }
+
     @OneToMany(mappedBy = "usuario")
     private Set<Anotacao> anotacoes;
 
     @ManyToMany(mappedBy = "usuarios")
     private Set<Autorizacao> autorizacoes;
 
-    public Usuario(String nome, String senha) {
+    public Usuario(String nome, String senha, LocalDate demissao) {
         this();
         this.nome = nome;
         this.senha = senha;
+        this.demissao = demissao;
     }
 
     public Usuario() {
